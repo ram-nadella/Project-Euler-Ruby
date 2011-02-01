@@ -14,4 +14,4 @@ max_product = 0
   end
 end
 
-puts max_product
+puts "Answer: " + max_product.to_s

@@ -2,6 +2,8 @@
 
 # Find the sum of all the primes below two million.
 
+# Function to check if a number is prime, using the algorithm provided in the solution to problem 7
+
 def prime?(number)
   if number == 1
     return false

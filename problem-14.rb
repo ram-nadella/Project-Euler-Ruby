@@ -13,12 +13,20 @@ end
 count = 2
 max_count = 0
 at_number = 2
+known = {}
 
 (2..1000000).each do |number|
   start = number
-  until (number = next_number(number)) == 1
+  until known.has_key?(number) || (number = next_number(number)) == 1
     count += 1
   end
+  
+  if number != 1
+    count += known.fetch(number)
+  end
+  
+  known[start] = count
+  
   if count > max_count
     max_count = count
     at_number = start

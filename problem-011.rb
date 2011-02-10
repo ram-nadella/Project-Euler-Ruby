@@ -32,77 +32,34 @@ grid_original.each_line do |line|
   grid << line.split(" ").map! {|x| x.to_i}
 end
 
-
-
-# grid.each_index do |i|
-#   (0..grid[i].size-4).each do |j|
-#     product = grid[i][j]*grid[i][j+1]*grid[i][j+2]*grid[i][j+3]
-#     if product > max_product
-#       max_product = product
-#     end
-#   end
-# end
-# 
-# (0..grid.size-4).each do |i|
-#   grid[i].each_index do |j|
-#     product = grid[i][j]*grid[i+1][j]*grid[i+1][j]*grid[i+3][j]
-#     if product > max_product
-#       max_product = product
-#     end
-#   end
-# end
-
-max_product = 1
-
-products = []
+max_product = 0
 
 grid.each_index do |i|
   grid[i].each_index do |j|
-    
     product_h = 1
     product_v = 1
-    product_d = 1
-    
+    product_d1 = 1
+    product_d2 = 1
     (0..3).each do |inc|
-      if i+inc >= 20
-        break
-      else
+      if ((i+inc) < grid.size-1) && ((j+inc) < grid.size-1)
         product_h *= grid[i+inc][j]
-      end
-    end
-    
-    products << product_h
-    
-    (0..3).each do |inc|  
-      if j+inc >= 20
-        break
-      else
         product_v *= grid[i][j+inc]
+        product_d1 *= grid[i+inc][j+inc]
+        product_d2 *= grid[grid.size-1-(i+inc)][j+inc]
       end
     end
-    
-    products << product_v
-      
-    (0..3).each do |inc|  
-      if i+inc >= 20 || j+inc >= 20
-        break
-      else
-        product_d *= grid[i+inc][j+inc]
-      end
-    end
-    
-    products << product_d
     
     if product_h > max_product
       max_product = product_h
     elsif product_v > max_product
       max_product = product_v
-    elsif product_d > max_product
-      max_product = product_d
+    elsif product_d1 > max_product
+      max_product = product_d1
+    elsif product_d2 > max_product
+      max_product = product_d2
     end
+    
   end
 end
 
-puts max_product
-
-puts products.sort.reverse[0]
+puts "Answer: #{max_product}"

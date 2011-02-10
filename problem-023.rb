@@ -5,12 +5,18 @@
 
 def abundant_number?(number)
   sum = 0
-  (1..number).each do |n|
+  (1..Math.sqrt(number)).each do |n|
     if number%n == 0
       sum += n
       sum += number/n
     end
   end
+  
+  # correction for perfect squares
+  if Math.sqrt(number).integer?
+    sum -= Math.sqrt(number)
+  end
+  
   if sum > number
     return true
   else

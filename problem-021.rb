@@ -34,14 +34,11 @@ amicable_numbers = []
 (1..10000).each do |number|
   if !amicable_numbers.include?(number)
     possible_partner = sum_of_perfect_divisors(number)
-    if possible_partner < 10000
-      if number == sum_of_perfect_divisors(possible_partner)
-        if number != possible_partner
+    if (possible_partner < 10000) && 
+      (number == sum_of_perfect_divisors(possible_partner)) &&
+      (number != possible_partner)
           sum += number+possible_partner
           amicable_numbers << number << possible_partner
-          puts "Pair: (#{number}, #{possible_partner})"
-        end
-      end
     end
   end
 end

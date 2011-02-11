@@ -29,6 +29,13 @@ def triangle_number?(number)
   end
 end
 
+=begin
+
+Read the file, store contents in a string, split the string 
+and extract the words into an array and compute the scores for
+each word and go over each score to see if it's a triange number
+
+=end
 
 words_file_contents = ""
 File.open('data/words.txt').each do |line|

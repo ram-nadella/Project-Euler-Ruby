@@ -7,10 +7,10 @@ max_count = 0
 
 (3..1000).each do |sum|
   count = 0
-  (1..sum-2).each do |a|
-    (a..sum-a-1).each do |b|
-      c = Math.sqrt(a**2 + b**2)
-      if (c-c.to_i) == 0 && (a+b+c) == sum
+  (1..sum/2-1).each do |c|
+    (1..c-1).each do |a|
+      b = Math.sqrt(c**2 - a**2)
+      if (a+b+c) == sum
         count += 1
       end
     end
@@ -22,5 +22,3 @@ max_count = 0
 end
 
 puts "Answer: #{max_at_sum}"
-
-# RT 149sec

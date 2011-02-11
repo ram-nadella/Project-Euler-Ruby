@@ -4,18 +4,20 @@
 # contain the same digits
 
 
+require "pp"
+
 def same_digits?(number)
   numbers = []
   (1..6).each do |n|
     numbers << number*n
   end
-  numbers.map! {|x| x.to_s.split("").sort}
-  numbers.uniq!
-  if numbers.size == 1
-    return true
-  else
-    return false
+  numbers.map! {|x| x.to_s.split("").sort.to_s}
+  numbers.each do |number|
+    if number != numbers.first
+      return false
+    end
   end
+  return true
 end
 
 number = 1

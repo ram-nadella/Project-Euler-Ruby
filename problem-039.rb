@@ -9,8 +9,7 @@ max_count = 0
   count = 0
   (1..sum/2-1).each do |c|
     (1..c-1).each do |a|
-      b = Math.sqrt(c**2 - a**2)
-      if (a+b+c) == sum
+      if ((b = sum - (a+c)) < c) && (c**2 == a**2 + b**2)
         count += 1
       end
     end

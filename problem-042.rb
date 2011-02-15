@@ -13,15 +13,14 @@ def alpha_score(word, alpha_values)
   return score
 end
 
+=begin
+A triangle number is a number of the form, (n*(n+1))/2 where n is a natural
+number. The following function determines the positive root of the 
+quadratic equation n**2 + n - 2*number = 0 and checks to see if it is natural
+=end
+
 def triangle_number?(number)
-  root1 = (-1+Math.sqrt(1+(8*number)))/2
-  root2 = (-1-Math.sqrt(1+(8*number)))/2
-  root = 0
-  if root1 > root2
-    root = root1
-  else
-    root = root2
-  end
+  root = (-1+Math.sqrt(1+(8*number)))/2
   if (root-root.to_i) == 0
     return true
   else
